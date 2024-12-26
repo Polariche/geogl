@@ -11,7 +11,7 @@ find_package(glm CONFIG REQUIRED)
 add_executable(geogl
         src/Common/GL/GLApp.cpp
         src/Common/GL/Shader.cpp
-        src/Scenes/tutorials/tutorial_02.cpp
+        src/Scenes/tutorials/tutorial_03.cpp
 )
 target_link_libraries(geogl
         glfw

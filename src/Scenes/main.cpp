@@ -89,7 +89,7 @@ bool MainApp::InitRenderObjects() {
     vbo = new BufferObject<Point>(GL_ARRAY_BUFFER, &points);
     vbo->SetAttribPointer(vao, GL_FLOAT);
 
-    ibo = new BufferObject<pair<unsigned int,unsigned int>>(GL_ELEMENT_ARRAY_BUFFER, &edges);
+    ibo = new BufferObject<Edge>(GL_ELEMENT_ARRAY_BUFFER, &edges);
 
     return true;
 }

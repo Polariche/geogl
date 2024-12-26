@@ -18,7 +18,7 @@ public:
     void Bind() const;
     void Unbind() const;
     void BufferData() const;
-    void SetAttribPointer(unsigned int vao, int type) const;
+    void SetAttribPointer(unsigned int vao, int dtype) const;
 
     inline std::vector<T> * GetVector() const {return _data; }
     inline std::vector<T> * GetSize() const {return _data->size(); }
@@ -62,19 +62,19 @@ void BufferObject<T>::BufferData() const {
 }
 
 template<typename T>
-void BufferObject<T>::SetAttribPointer(unsigned int vao, int type) const {
+void BufferObject<T>::SetAttribPointer(unsigned int vao, int dtype) const {
     Bind();
 
     glBindVertexArray(vao);
     glEnableVertexAttribArray(0);
 
-    switch(type) {
+    switch(dtype) {
         case GL_FLOAT: 
-            glVertexAttribPointer(0, sizeof(T) / sizeof(float), type, GL_FALSE, sizeof(T), nullptr);
+            glVertexAttribPointer(0, sizeof(T) / sizeof(float), dtype, GL_FALSE, sizeof(T), nullptr);
             break;
 
         case GL_DOUBLE: 
-            glVertexAttribPointer(0, sizeof(T) / sizeof(double), type, GL_FALSE, sizeof(T), nullptr);
+            glVertexAttribPointer(0, sizeof(T) / sizeof(double), dtype, GL_FALSE, sizeof(T), nullptr);
             break;
     }
     
