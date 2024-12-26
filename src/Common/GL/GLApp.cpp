@@ -3,7 +3,6 @@
 #include "GLApp.h"
 
 GLApp::~GLApp() {
-    // glfwTerminate();
 } 
 
 void GLApp::Run() {
@@ -35,7 +34,7 @@ bool GLApp::InitOpenGL() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 
-    window = glfwCreateWindow(width, height, "Hello Cubes", NULL, NULL);
+    window = glfwCreateWindow(width, height, "OpenGL App", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -47,44 +46,44 @@ bool GLApp::InitOpenGL() {
 
     GLenum result = glewInit();
 
-    glfwSetWindowUserPointer(window, this);
     glEnable(GL_PROGRAM_POINT_SIZE);
-
 
     return true;
 }
 
 bool GLApp::InitShaders() {
-    shaderProgram = glCreateProgram();
+//     shaderProgram = glCreateProgram();
 
-    std::string vertexShaderSource = load_text("../src/shaders/vert.vert");
-    if (!vertexShaderSource.empty()) {
-        vertexShader = new Shader(GL_VERTEX_SHADER, vertexShaderSource.c_str());
-        vertexShader->Attach(shaderProgram);
-        vertexShader->Delete();
-    }
+//     std::string vertexShaderSource = load_text("../src/shaders/vert.vert");
+//     if (!vertexShaderSource.empty()) {
+//         vertexShader = new Shader(GL_VERTEX_SHADER, vertexShaderSource.c_str());
+//         vertexShader->Attach(shaderProgram);
+//         vertexShader->Delete();
+//     }
 
-    std::string geometryShaderSource = load_text("../src/shaders/geom.geom");
-    if (!geometryShaderSource.empty()) {
-        geometryShader = new Shader(GL_GEOMETRY_SHADER, geometryShaderSource.c_str());
-        geometryShader->Attach(shaderProgram);
-        geometryShader->Delete();
-    }
+//     std::string geometryShaderSource = load_text("../src/shaders/geom.geom");
+//     if (!geometryShaderSource.empty()) {
+//         geometryShader = new Shader(GL_GEOMETRY_SHADER, geometryShaderSource.c_str());
+//         geometryShader->Attach(shaderProgram);
+//         geometryShader->Delete();
+//     }
 
-    std::string fragmentShaderSource = load_text("../src/shaders/frag.frag");
-    if (!fragmentShaderSource.empty()) {
-        fragmentShader = new Shader(GL_FRAGMENT_SHADER, fragmentShaderSource.c_str());
-        fragmentShader->Attach(shaderProgram);
-        fragmentShader->Delete();
-    }
+//     std::string fragmentShaderSource = load_text("../src/shaders/frag.frag");
+//     if (!fragmentShaderSource.empty()) {
+//         fragmentShader = new Shader(GL_FRAGMENT_SHADER, fragmentShaderSource.c_str());
+//         fragmentShader->Attach(shaderProgram);
+//         fragmentShader->Delete();
+//     }
 
-    glLinkProgram(shaderProgram);
+//     glLinkProgram(shaderProgram);
     
 
     return true;
 }
 
 bool GLApp::InitCallbacks() {
+
+    glfwSetWindowUserPointer(window, this);
 
     // use OnMouseDown and OnMouseUp
     glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods) {
