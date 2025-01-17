@@ -27,12 +27,14 @@ protected:
     virtual void OnMouseUp(int button, double xpos, double ypos) = 0;
     virtual void OnMouseMove(double xpos, double ypos) = 0;
     
-//     virtual void OnKeyDown() {}
-//     virtual void OnKeyUp() {}
+    virtual void OnKeyDown(int key, int scancode, int mods) = 0;
+    virtual void OnKeyUp(int key, int scancode, int mods) = 0;
+    virtual void OnKeyHold(int key, int scancode, int mods) = 0;
+    
 
 protected:
     bool InitOpenGL();
-    bool InitShaders();
+    bool InitShaders(const char*  vertexPath, const char* fragPath);
     bool InitCallbacks();
 
 public:
@@ -44,10 +46,9 @@ protected:
     int height = 640;
 
 
-private:
+protected:
     unsigned int shaderProgram;
     Shader* vertexShader;
-    Shader* geometryShader;
     Shader* fragmentShader;
 
 };

@@ -26,4 +26,5 @@ void Shader::Delete() {
     if (deleted)
         return;
     glDeleteShader(_id);
+    deleted = true;
 }
